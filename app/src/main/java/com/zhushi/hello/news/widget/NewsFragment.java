@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by zhushi on 2016/3/2.
  */
-public class NewsFragmemt extends Fragment {
+public class NewsFragment extends Fragment {
 
     public static final int NEWS_TYPE_TOP = 0;
     public static final int NEWS_TYPE_NBA = 1;

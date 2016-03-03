@@ -15,7 +15,7 @@ import com.zhushi.hello.images.widget.ImageFragment;
 import com.zhushi.hello.main.presenter.MainPresenter;
 import com.zhushi.hello.main.presenter.MainPresenterImp;
 import com.zhushi.hello.main.view.MainView;
-import com.zhushi.hello.news.widget.NewsFragmemt;
+import com.zhushi.hello.news.widget.NewsFragment;
 import com.zhushi.hello.weather.widget.WeatherFragment;
 
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void switch2News() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new NewsFragmemt()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new NewsFragment()).commit();
         toolbar.setTitle(R.string.navigation_news);
     }
 
