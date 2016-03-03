@@ -86,6 +86,12 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
         private int lastVisibleItem;
 
         @Override
+        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
+        }
+
+        @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
             if (newState == RecyclerView.SCROLL_STATE_IDLE
@@ -97,11 +103,7 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
             }
         }
 
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
-        }
+
     };
 
     private NewsAdapter.OnItemClickListener mOnItemClickListener = new NewsAdapter.OnItemClickListener() {
@@ -140,7 +142,7 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
         }
         mData.addAll(newsList);
         if (pageIndex == 0) {
-            mNewsAdapter.setmData(newsList);
+            mNewsAdapter.setmData(mData);
         } else {
             //如果没有更多数据了,则隐藏footer布局
             if (newsList == null || newsList.size() == 0) {

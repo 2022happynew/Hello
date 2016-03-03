@@ -15,6 +15,7 @@ import com.zhushi.hello.utils.ImageLoaderUtils;
 import java.util.List;
 
 /**
+ * 新闻数据适配器
  * Created by zhushi on 2016/3/2.
  */
 public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -41,8 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ITEM) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false);
-            ItemViewHolder vh = new ItemViewHolder(view);
-            return vh;
+            return new ItemViewHolder(view);
 
         } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fooder, null);
@@ -87,10 +87,6 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return begin;
         }
         return mData.size() + begin;
-    }
-
-    public NewsBean getItem(int position) {
-        return mData == null ? null : mData.get(position);
     }
 
     public void isShowFooter(boolean showFooter) {

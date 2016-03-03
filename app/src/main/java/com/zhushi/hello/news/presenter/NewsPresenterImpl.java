@@ -11,6 +11,7 @@ import com.zhushi.hello.utils.LogUtils;
 import java.util.List;
 
 /**
+ * presenter实现中有view和model的引用
  * Created by zhushi on 2016/3/2.
  */
 public class NewsPresenterImpl implements NewsPresenter, NewsModelImpl.OnLoadNewsListListener {
