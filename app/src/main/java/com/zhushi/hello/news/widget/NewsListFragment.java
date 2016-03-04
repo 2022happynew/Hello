@@ -1,5 +1,6 @@
 package com.zhushi.hello.news.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -109,7 +110,11 @@ public class NewsListFragment extends Fragment implements NewsView, SwipeRefresh
     private NewsAdapter.OnItemClickListener mOnItemClickListener = new NewsAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
+            NewsBean news = mNewsAdapter.getItem(position);
+            Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+            intent.putExtra("news", news);
 
+            startActivity(intent);
         }
     };
 

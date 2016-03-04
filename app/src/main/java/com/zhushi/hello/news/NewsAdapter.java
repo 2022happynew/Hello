@@ -97,6 +97,10 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return this.mShowFooter;
     }
 
+    public NewsBean getItem(int position) {
+        return mData.get(position);
+    }
+
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
