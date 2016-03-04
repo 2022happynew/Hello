@@ -22,4 +22,8 @@ public class Urls {
     public static final String CAR_ID = "T1348654060988";
     // 笑话
     public static final String JOKE_ID = "T1350383429665";
+
+    // 图片
+    public static final String IMAGES_URL = "http://api.laifudao.com/open/tupian.json";
+
 }
