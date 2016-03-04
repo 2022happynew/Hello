@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.zhushi.hello.beans.NewsBean;
+import com.zhushi.hello.beans.NewsDetailBean;
 import com.zhushi.hello.utils.JsonUtils;
 import com.zhushi.hello.utils.LogUtils;
 
@@ -52,5 +53,21 @@ public class NewsJsonUtils {
             LogUtils.e(TAG, "readJsonNewsBeans error", e);
         }
         return beans;
+    }
+
+    public static NewsDetailBean readJsonNewsDetailBeans(String res, String docId) {
+        NewsDetailBean newsDetailBean = null;
+        try {
+            JsonParser parser = new JsonParser();
+            JsonObject jsonObj = parser.parse(res).getAsJsonObject();
+            JsonElement jsonElement = jsonObj.get(docId);
+            if (jsonElement == null) {
+                return null;
+            }
+            newsDetailBean = JsonUtils.deserialize(jsonElement.getAsJsonObject(), NewsDetailBean.class);
+        } catch (Exception e) {
+            LogUtils.e(TAG, "readJsonNewsBeans error", e);
+        }
+        return newsDetailBean;
     }
 }

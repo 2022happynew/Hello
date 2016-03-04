@@ -1,6 +1,7 @@
 package com.zhushi.hello.news.model;
 
 import com.zhushi.hello.beans.NewsBean;
+import com.zhushi.hello.beans.NewsDetailBean;
 import com.zhushi.hello.commons.Urls;
 import com.zhushi.hello.news.NewsJsonUtils;
 import com.zhushi.hello.news.widget.NewsFragment;
@@ -39,6 +40,35 @@ public class NewsModelImpl implements NewsModel {
     }
 
     /**
+     * 加载新闻详情
+     *
+     * @param docid
+     */
+    @Override
+    public void loadNewsDetail(final String docid, final OnLoadNewsDetailListener listener) {
+        String url = getDetailUrl(docid);
+        OkHttpUtils.ResultCallback<String> loadNewsCallback = new OkHttpUtils.ResultCallback<String>() {
+            @Override
+            public void onSuccess(String response) {
+                NewsDetailBean newsDetailBean = NewsJsonUtils.readJsonNewsDetailBeans(response, docid);
+                listener.onSuccess(newsDetailBean);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                listener.onFailure("load news detail info failure.", e);
+            }
+        };
+        OkHttpUtils.get(url, loadNewsCallback);
+    }
+
+    private String getDetailUrl(String docId) {
+        StringBuffer sb = new StringBuffer(Urls.NEW_DETAIL);
+        sb.append(docId).append(Urls.END_DETAIL_URL);
+        return sb.toString();
+    }
+
+    /**
      * 获取ID
      *
      * @param type
@@ -68,6 +98,12 @@ public class NewsModelImpl implements NewsModel {
 
     public interface OnLoadNewsListListener {
         void onSuccess(List<NewsBean> list);
+
+        void onFailure(String msg, Exception e);
+    }
+
+    public interface OnLoadNewsDetailListener {
+        void onSuccess(NewsDetailBean newsDetailBean);
 
         void onFailure(String msg, Exception e);
     }
