@@ -58,6 +58,7 @@ public class WeatherFragment extends Fragment implements WeatherView {
         mProgressBar = (ProgressBar) view.findViewById(R.id.progress);
         mWeatherLayout = (LinearLayout) view.findViewById(R.id.weather_layout);
         mWeatherContentLayout = (LinearLayout) view.findViewById(R.id.weather_content);
+
         mWeatherPresenter.loadWeatherData();
         return view;
     }

@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mMainPresenter = new MainPresenterImp(this);
         setupDrawerContent(mNavigationView);
 
-        mMainPresenter = new MainPresenterImp(this);
         switch2News();
     }
 
