@@ -62,6 +62,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             ((ItemViewHolder) holder).mTitle.setText(newsBean.getTitle());
             ((ItemViewHolder) holder).mDesc.setText(newsBean.getDigest());
+            ((ItemViewHolder) holder).mTime.setText(newsBean.getPtime());
             ImageLoaderUtils.display(mContext, ((ItemViewHolder) holder).mNewsImg, newsBean.getImgsrc());
         }
     }
@@ -121,6 +122,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         public TextView mTitle;
         public TextView mDesc;
+        public TextView mTime;
         public ImageView mNewsImg;
 
         public ItemViewHolder(View v) {
@@ -128,6 +130,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mTitle = (TextView) v.findViewById(R.id.tvTitle);
             mDesc = (TextView) v.findViewById(R.id.tvDesc);
             mNewsImg = (ImageView) v.findViewById(R.id.ivNews);
+            mTime= (TextView) v.findViewById(R.id.tvTime);
             v.setOnClickListener(this);
         }
 

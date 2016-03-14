@@ -13,7 +13,6 @@ public class NewsBean implements Serializable {
     private String imgsrc;
     private String source;
     private String ptime;
-    private String tag;
 
     public String getDocid() {
         return docid;
@@ -63,11 +62,4 @@ public class NewsBean implements Serializable {
         this.ptime = ptime;
     }
 
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
 }
