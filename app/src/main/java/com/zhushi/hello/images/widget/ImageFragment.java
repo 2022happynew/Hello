@@ -1,5 +1,6 @@
 package com.zhushi.hello.images.widget;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -57,12 +58,22 @@ public class ImageFragment extends Fragment implements ImageView, SwipeRefreshLa
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mImageAdapter = new ImageAdapter(getActivity().getApplicationContext());
+        mImageAdapter.setmOnItemClickListener(onItemClickListener);
         mRecyclerView.setAdapter(mImageAdapter);
         mRecyclerView.addOnScrollListener(mOnScrollListener);
         onRefresh();
         return view;
     }
 
+    private ImageAdapter.OnItemClickListener onItemClickListener = new ImageAdapter.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            ImageBean imageBean = mImageAdapter.getItem(position);
+            Intent intent = new Intent(getActivity(), BigImageActivity.class);
+            intent.putExtra("image", imageBean);
+            startActivity(intent);
+        }
+    };
     private RecyclerView.OnScrollListener mOnScrollListener = new RecyclerView.OnScrollListener() {
 
         private int lastVisibleItem;

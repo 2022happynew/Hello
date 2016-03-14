@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.zhushi.hello.R;
 import com.zhushi.hello.beans.ImageBean;
+import com.zhushi.hello.beans.NewsBean;
 import com.zhushi.hello.utils.ImageLoaderUtils;
 import com.zhushi.hello.utils.ToolsUtil;
 
@@ -23,6 +24,19 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageItemVie
     private int mMaxWidth;
     private int mMaxHeight;
     private List<ImageBean> mData;
+    private OnItemClickListener mOnItemClickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
+    public void setmOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
+    }
+
+    public ImageBean getItem(int position) {
+        return mData.get(position);
+    }
 
     public ImageAdapter(Context context) {
         this.mContext = context;
@@ -65,7 +79,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageItemVie
         return mData == null ? 0 : mData.size();
     }
 
-    public class ImageItemViewHolder extends RecyclerView.ViewHolder  {
+    public class ImageItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView mTitle;
         public android.widget.ImageView mImage;
@@ -74,6 +88,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageItemVie
             super(itemView);
             mTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             mImage = (android.widget.ImageView) itemView.findViewById(R.id.ivImage);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(v, this.getPosition());
+            }
         }
     }
 }

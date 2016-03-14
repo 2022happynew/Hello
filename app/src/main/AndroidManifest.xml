@@ -23,11 +23,18 @@
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+
             </intent-filter>
         </activity>
 
         <activity
             android:name=".news.widget.NewsDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar.Translucent">
+
+        </activity>
+
+        <activity
+            android:name=".images.widget.BigImageActivity"
             android:theme="@style/AppTheme.NoActionBar.Translucent">
 
         </activity>

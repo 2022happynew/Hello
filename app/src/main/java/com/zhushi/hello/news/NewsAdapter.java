@@ -45,7 +45,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             return new ItemViewHolder(view);
 
         } else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fooder, null);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fooder, parent,false);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 

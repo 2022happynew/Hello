@@ -14,6 +14,7 @@ import java.util.List;
  * Created by zhushi on 2016/3/4.
  */
 public class WeatherPresenterImpl implements WeatherPresenter, WeatherModelImpl.LoadWeatherListener {
+
     private WeatherView mWeatherView;
     private WeatherModel mWeatherModel;
     private Context mContext;

@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -48,7 +47,7 @@ public class WeatherFragment extends Fragment implements WeatherView {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_weather, null);
+        View view = inflater.inflate(R.layout.fragment_weather, container, false);
         mTodayTV = (TextView) view.findViewById(R.id.today);
         mTodayWeatherImage = (ImageView) view.findViewById(R.id.weatherImage);
         mTodayTemperatureTV = (TextView) view.findViewById(R.id.weatherTemp);

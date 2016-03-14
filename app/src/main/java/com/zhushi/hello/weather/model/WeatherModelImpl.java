@@ -40,6 +40,7 @@ public class WeatherModelImpl implements WeatherModel {
                     listener.onFailure("load weather data failure", e);
                 }
             };
+
             OkHttpUtils.get(url, callback);
         } catch (UnsupportedEncodingException e) {
             LogUtils.e(TAG, "url encode error.", e);
