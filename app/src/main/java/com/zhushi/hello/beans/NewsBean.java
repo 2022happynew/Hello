@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Created by zhushi on 2016/3/2.
  */
 public class NewsBean implements Serializable {
-
     private String docid;
     private String title;
     private String digest;

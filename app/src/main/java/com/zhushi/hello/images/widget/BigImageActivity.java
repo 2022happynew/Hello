@@ -22,7 +22,7 @@ public class BigImageActivity extends SwipeBackActivity {
         setContentView(R.layout.activity_image);
         mImageBean = (ImageBean) getIntent().getSerializableExtra("image");
         imageView = (ImageView) findViewById(R.id.imageView);
-        ImageLoaderUtils.display(getApplicationContext(), imageView, mImageBean.getSourceurl());
+        ImageLoaderUtils.display(this, imageView, mImageBean.getSourceurl());
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

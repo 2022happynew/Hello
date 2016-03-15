@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * 这里为什么需要定义listener?
- * 因为加载网络数据是耗时操作，需要把model层的数据请求结果告诉view层展示。
+ * 因为加载网络数据是耗时操作，需要把model层的数据请求结果通过presenter告诉view层展示。
  * Created by zhushi on 2016/3/2.
  */
 public class NewsModelImpl implements NewsModel {

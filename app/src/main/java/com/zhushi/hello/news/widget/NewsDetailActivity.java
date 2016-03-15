@@ -56,7 +56,7 @@ public class NewsDetailActivity extends SwipeBackActivity implements NewsDetailV
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(mNews.getTitle());
 
-        ImageLoaderUtils.display(getApplicationContext(), (ImageView) findViewById(R.id.ivImage), mNews.getImgsrc());
+        ImageLoaderUtils.display(this, (ImageView) findViewById(R.id.ivImage), mNews.getImgsrc());
 
         mNewsDetailPresenter = new NewDetailPresenterImpl(getApplication(), this);
         mNewsDetailPresenter.loadNewsDetail(mNews.getDocid());
