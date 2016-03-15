@@ -26,6 +26,7 @@ public class OkHttpUtils {
     private Handler mDelivery;
 
     public OkHttpUtils() {
+        //创建OkHttpClient对象
         mOkHttpClient = new OkHttpClient();
         mOkHttpClient.setConnectTimeout(10, TimeUnit.SECONDS);
         mOkHttpClient.setWriteTimeout(10, TimeUnit.SECONDS);
@@ -36,19 +37,25 @@ public class OkHttpUtils {
     }
 
 
-    private synchronized static OkHttpUtils getmInstance() {
-        if (mInstance == null) {
-            mInstance = new OkHttpUtils();
+    private  static OkHttpUtils getmInstance() {
+        if (mInstance==null) {
+            synchronized(OkHttpUtils.class) {
+                if (mInstance == null) {
+                    mInstance = new OkHttpUtils();
+                }
+            }
         }
         return mInstance;
     }
 
     private void getRequest(String url, final ResultCallback callback) {
+        //创建request对象
         final Request request = new Request.Builder().url(url).build();
         deliveryResult(callback, request);
     }
 
     private void deliveryResult(final ResultCallback callback, Request request) {
+        //请求加入调度，以异步方式执行请求，任务执行完成，callback中得到结果
         mOkHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -113,7 +120,6 @@ public class OkHttpUtils {
      * @param <T>
      */
     public static abstract class ResultCallback<T> {
-
         Type mType;
 
         public ResultCallback() {
