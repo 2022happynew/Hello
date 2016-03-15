@@ -16,6 +16,25 @@ import java.util.List;
  * Created by zhushi on 2016/3/7.
  */
 public class WeatherJsonUtils {
+
+    /**
+     * 获取完整位置
+     * @param json
+     * @return
+     */
+    public static String getDescStr(String json){
+        JsonParser parser = new JsonParser();
+        JsonObject jsonObj = parser.parse(json).getAsJsonObject();
+        JsonElement status = jsonObj.get("status");
+        if (status != null && "OK".equals(status.getAsString())) {
+            JsonObject result = jsonObj.getAsJsonObject("result");
+            if (result != null) {
+                JsonElement descStr =result.get("formatted_address");
+                return descStr.getAsString();
+            }
+        }
+        return null;
+    }
     /**
      * 从定位的json字串中获取城市
      *

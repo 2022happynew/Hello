@@ -36,9 +36,9 @@ public class WeatherPresenterImpl implements WeatherPresenter, WeatherModelImpl.
 
         WeatherModelImpl.LoadLocationListener listener = new WeatherModelImpl.LoadLocationListener() {
             @Override
-            public void onSuccess(String cityName) {
+            public void onSuccess(String cityName,String descStr) {
                 //定位成功，获取定位城市天气预报
-                mWeatherView.setCity(cityName);
+                mWeatherView.setCity(descStr);
                 mWeatherModel.loadWeatherData(cityName, WeatherPresenterImpl.this);
             }
 

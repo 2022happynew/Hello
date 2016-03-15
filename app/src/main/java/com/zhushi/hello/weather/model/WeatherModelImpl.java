@@ -68,16 +68,18 @@ public class WeatherModelImpl implements WeatherModel {
         }
         double latitude = location.getLatitude();     //经度
         double longitude = location.getLongitude(); //纬度
+
         String url = getLocationURL(latitude, longitude);
         OkHttpUtils.ResultCallback<String> callback = new OkHttpUtils.ResultCallback<String>() {
             @Override
             public void onSuccess(String response) {
                 String city = WeatherJsonUtils.getCity(response);
+                String descStr=WeatherJsonUtils.getDescStr(response);
                 if (TextUtils.isEmpty(city)) {
                     LogUtils.e(TAG, "load location info failure.");
                     listener.onFailure("load location info failure.", null);
                 } else {
-                    listener.onSuccess(city);
+                    listener.onSuccess(city,descStr);
                 }
             }
 
@@ -90,6 +92,12 @@ public class WeatherModelImpl implements WeatherModel {
         OkHttpUtils.get(url, callback);
     }
 
+    /**
+     * 通过经纬度得到定位url
+     * @param latitude
+     * @param longitude
+     * @return
+     */
     private String getLocationURL(double latitude, double longitude) {
         StringBuffer sb = new StringBuffer(Urls.INTERFACE_LOCATION);
         sb.append("?output=json").append("&referer=32D45CBEEC107315C553AD1131915D366EEF79B4");
@@ -99,7 +107,7 @@ public class WeatherModelImpl implements WeatherModel {
     }
 
     public interface LoadLocationListener {
-        void onSuccess(String cityName);
+        void onSuccess(String cityName,String descStr);
 
         void onFailure(String msg, Exception e);
     }
