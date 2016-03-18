@@ -18,7 +18,7 @@ import java.util.List;
 public class WeatherJsonUtils {
 
     /**
-     * 获取完整位置
+     * 获取完整位置String
      * @param json
      * @return
      */
@@ -35,6 +35,7 @@ public class WeatherJsonUtils {
         }
         return null;
     }
+
     /**
      * 从定位的json字串中获取城市
      *

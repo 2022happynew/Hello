@@ -66,8 +66,10 @@ public class WeatherModelImpl implements WeatherModel {
             listener.onFailure("location failure.", null);
             return;
         }
-        double latitude = location.getLatitude();     //经度
-        double longitude = location.getLongitude(); //纬度
+        //经度
+        double latitude = location.getLatitude();
+        //纬度
+        double longitude = location.getLongitude();
 
         String url = getLocationURL(latitude, longitude);
         OkHttpUtils.ResultCallback<String> callback = new OkHttpUtils.ResultCallback<String>() {
